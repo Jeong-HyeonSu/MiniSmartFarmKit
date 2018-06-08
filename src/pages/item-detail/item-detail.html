@@ -1,18 +1,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ item.name }}</ion-title>
+    <ion-title>Detail</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+  <div padding *ngFor="let item of item">
+    <h2>{{item.Name}}</h2>
+    <p>{{item.description}}</p>
   </div>
 
-  <div class="item-detail" padding>
-    <h2>{{item.name}}</h2>
-    <p>{{item.about}}</p>
+  <div>
+    <button ion-button color="primary" block (click)="setPlant()">Set as 'My Plant'</button>
   </div>
+  <div>
+    <button ion-button color="danger" block (click)="deletePlant()">Delete from 'My Plant'</button>
+  </div>
+
+  
 </ion-content>

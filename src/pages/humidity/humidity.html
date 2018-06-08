@@ -1,0 +1,41 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="icons" color="secondary">
+      <ion-segment-button value="color-fill">
+        <ion-icon name="color-fill"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="sunny">
+        <ion-icon name="sunny"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="thermometer">
+        <ion-icon name="thermometer"></ion-icon>
+      </ion-segment-button>
+
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <div [ngSwitch]="icons">
+    <ion-list *ngSwitchCase="'color-fill'">
+      <img src="assets/img/humidity.png">
+      <h3>Humidity : <span>{{humidityState}}</span><span> (</span><span>{{humidity}}</span><span>%)</span></h3>
+      <button ion-button (click)="presentAlert()">water</button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'sunny'">
+      <img src="assets/img/sun.png">
+      <h3>illumination : <span>{{illuminanceState}}</span><span> (</span><span>{{illuminance}}</span><span>)</span></h3>
+      <button ion-button (click)="presentAlert()">light</button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'thermometer'">
+      <img src="assets/img/thermometer.png">
+      <h3>temperature : <span>{{temperatureState}}</span><span> (</span><span>{{temperature}}</span><span> ℃)</span></h3>
+      <button ion-button (click)="presentAlert()">heat</button>
+    </ion-list>
+  </div>
+</ion-content>

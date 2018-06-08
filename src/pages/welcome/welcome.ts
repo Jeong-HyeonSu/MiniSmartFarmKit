@@ -1,26 +1,62 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, AlertController } from 'ionic-angular';
+import {AngularFireDatabase} from 'angularfire2/database';
 
-/**
- * The Welcome Page is a splash page that quickly describes the app,
- * and then directs the user to create an account or log in.
- * If you'd like to immediately put the user onto a login/signup page,
- * we recommend not using the Welcome page.
-*/
 @IonicPage()
 @Component({
   selector: 'page-welcome',
   templateUrl: 'welcome.html'
 })
+
+
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController) { }
+  serialNumber : string;
+  userRef : any;
+  checkStart : any;
 
-  login() {
-    this.navCtrl.push('LoginPage');
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, 
+    public afDB : AngularFireDatabase, public alertCtrl: AlertController) { 
+
+
   }
 
-  signup() {
-    this.navCtrl.push('SignupPage');
+  login() {
+
+    var trans;
+
+    console.log(this.serialNumber)
+
+    this.userRef = "userFarm/" + this.serialNumber;
+
+    this.afDB.object(this.userRef).snapshotChanges().take(1).subscribe((item) => {
+
+      if(!item.key) {
+        let alert = this.alertCtrl.create({
+          title: 'Wrong serial Number',
+          subTitle: 'Please check the right serial Number.',
+          buttons: ['Dismiss']
+        });
+        alert.present();
+      }
+      
+      else {
+        trans = item.payload.val().numberOfPlants;
+
+        if(trans != '0') {
+          this.navCtrl.setRoot('TabsPage', {serialNumber : this.serialNumber}, {
+            animate: true,
+            direction: 'forward'
+          });
+        }
+        else {
+          this.navCtrl.setRoot('SearchPage', {serialNumber : this.serialNumber}, {
+            animate: true,
+            direction: 'forward'
+          });
+        }
+      }
+    })
+   
   }
 }

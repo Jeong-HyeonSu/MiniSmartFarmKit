@@ -15,6 +15,10 @@ import { User } from '../providers/providers';
 import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
 
+import { AngularFireModule } from 'angularfire2';
+import {AngularFireDatabase,AngularFireDatabaseModule} from 'angularfire2/database';
+
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -36,6 +40,17 @@ export function provideSettings(storage: Storage) {
   });
 }
 
+
+export const config = {
+  apiKey: "AIzaSyB1lkDzQfP2A2YcHTp0lLOG9QMHrXExcBg",
+  authDomain: "capstonemaster-3b52b.firebaseapp.com",
+  databaseURL: "https://capstonemaster-3b52b.firebaseio.com",
+  projectId: "capstonemaster-3b52b",
+  storageBucket: "capstonemaster-3b52b.appspot.com",
+  messagingSenderId: "463496465390"
+};
+
+
 @NgModule({
   declarations: [
     MyApp
@@ -50,6 +65,8 @@ export function provideSettings(storage: Storage) {
         deps: [HttpClient]
       }
     }),
+    AngularFireModule.initializeApp(config),
+    AngularFireDatabaseModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -58,6 +75,7 @@ export function provideSettings(storage: Storage) {
     MyApp
   ],
   providers: [
+    AngularFireDatabase,
     Api,
     Items,
     User,

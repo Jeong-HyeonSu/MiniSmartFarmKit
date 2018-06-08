@@ -1,0 +1,29 @@
+page-notice {
+    .accordion-list {
+        background: #f4f4f4;
+        height: 100%;
+        padding-top : 2vh;
+    }
+    .section {
+        background: #ffffff;
+        color: #303a50;
+    }
+    .section-active {
+        background: #ff8791;
+        color: #ffffff;
+    }
+
+    .child-item {
+        background: #f4f4f4;
+        padding: 10px;
+    }
+    .label {
+        margin: 0px;
+    }
+    .list {
+    }
+    .header {
+        background: #8ec595;
+        color : #8ec595;
+    }
+}

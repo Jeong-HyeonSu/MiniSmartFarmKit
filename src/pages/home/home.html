@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar color ="primary">
+        <ion-title>Home</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <img *ngIf ="flag == false" src="assets/img/sad.png">
+    <img *ngIf ="flag == true" src="assets/img/sad.png">
+    <ion-buttons>
+        <button ion-button color="secondary" (click) = "openTemperaturePage()">Temperature</button>
+        <button *ngIf = "temperatureFlag == true" ion-button color="primary" (click) = "openTemperaturePage()"><p>{{temperatureState}}</p><p> (</p><p>{{temperature}}</p><p> ℃)</p></button>
+        <button *ngIf = "temperatureFlag == false" ion-button color="danger" (click) = "openTemperaturePage()"><p>{{temperatureState}}</p><p> (</p><p>{{temperature}}</p><p> ℃)</p></button>
+        
+    </ion-buttons>
+    <ion-buttons>
+        <button ion-button color="secondary" (click) = "openHumidityPage()">Humidity</button>
+        <button *ngIf = "humidityFlag == true" ion-button color="primary" (click) = "openHumidityPage()"><p>{{humidityState}}</p><p> (</p><p>{{humidity}}</p><p>%)</p></button>
+        <button *ngIf = "humidityFlag == false" ion-button color="danger" (click) = "openHumidityPage()"><p>{{humidityState}}</p><p> (</p><p>{{humidity}}</p><p>%)</p></button>
+    </ion-buttons>
+    <ion-buttons>
+        <button ion-button color="secondary" (click) = "openIlluminationPage()">Illuminiation</button>
+        <button *ngIf = "iluuminanceFlag == true" ion-button color="primary" (click) = "openIlluminationPage()"><p>{{illuminanceState}}</p><p> (</p><p>{{illuminance}}</p><p>)</p></button>
+        <button *ngIf = "iluuminanceFlag == false" ion-button color="danger" (click) = "openIlluminationPage()"><p>{{illuminanceState}}</p><p> (</p><p>{{illuminance}}</p><p>)</p></button>
+    </ion-buttons>
+</ion-content>

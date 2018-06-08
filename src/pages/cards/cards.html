@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{ 'CARDS_TITLE' | translate }}</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Settings</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,40 +9,87 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let item of cardItems">
+  <ion-card>
+    <ion-card-content no-padding>
+      <ion-item>
+        <h1>Set Plant</h1>
+        <button ion-button clear icon-left item-end (click)="setPlant()">
+          <ion-icon name='arrow-forward' large></ion-icon>
+        </button>
+      </ion-item>
 
-    <ion-item>
-      <ion-avatar item-start>
-        <img [src]="item.user.avatar">
-      </ion-avatar>
-      <h2>{{item.user.name}}</h2>
-      <p>{{item.date}}</p>
-    </ion-item>
-
-    <img [src]="item.image">
-
-    <ion-card-content>
-      <p>{{item.content}}</p>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
-        <button ion-button color="primary" clear small icon-start>
-            <ion-icon name='thumbs-up'></ion-icon>
-            12 Likes
-          </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button color="primary" clear small icon-start>
-            <ion-icon name='text'></ion-icon>
-            4 Comments
-          </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
+        <button ion-button color="secondary" clear small icon-start>
+          <ion-icon name='flower' item-right></ion-icon>
+          Flowers
+        </button>
       </ion-col>
     </ion-row>
+  </ion-card>
+
+  <ion-card>
+
+      <ion-card-content no-padding>
+        <ion-item>
+          <h1>Engines</h1>
+          <button ion-button clear icon-left item-end (click)="setEngines()">
+            <ion-icon name='arrow-forward' large></ion-icon>
+          </button>
+        </ion-item>
+  
+      </ion-card-content>
+  
+      <ion-row>
+        <ion-col>
+          <button ion-button color="danger" clear small icon-start>
+            <ion-icon name='cog' item-right></ion-icon>
+            Engines
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+  <ion-card>
+    <!-- <ion-item>
+        <ion-avatar item-start>
+          <img [src]="item.user.avatar">
+        </ion-avatar>
+        <h2>{{item.user.name}}</h2>
+        <p>{{item.date}}</p>
+      </ion-item>
+  
+      <img [src]="item.image"> -->
+    <ion-card-content no-padding>
+      <ion-item>
+        <h2>Notice</h2>
+        <button ion-button clear icon-left item-end (click)="showNotice()">
+          <ion-icon name='arrow-forward' large></ion-icon>
+        </button>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <!-- <ion-item>
+          <ion-avatar item-start>
+            <img [src]="item.user.avatar">
+          </ion-avatar>
+          <h2>{{item.user.name}}</h2>
+          <p>{{item.date}}</p>
+        </ion-item>
+    
+        <img [src]="item.image"> -->
+    <ion-card-content no-padding>
+        <ion-item>
+            <h2>Customer Service</h2>
+            <button ion-button clear icon-left item-end (click)="customerService()">
+              <ion-icon name='arrow-forward' large></ion-icon>
+            </button>
+          </ion-item>
+    </ion-card-content>
   </ion-card>
 </ion-content>

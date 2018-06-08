@@ -3,11 +3,20 @@
   <div class="splash-info">
     <div class="splash-logo"></div>
     <div class="splash-intro">
-      {{ 'WELCOME_INTRO' | translate }}
+      The starting point for your next great Smart Farm
     </div>
   </div>
   <div padding>
-    <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button>
-    <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Serial Number</ion-label>
+        <ion-input type="text" [(ngModel)]="serialNumber" name="serialNumber"></ion-input>
+      </ion-item>
+
+      <div no-padding>
+        <button ion-button color="secondary" block (click)="login()" class="login">SIGN IN</button>
+        <p style="color:gray; font-size:11px">If you don't know your serial number please click <a href ="https://choichulgon.github.io/capstoneWeb/Help.html">here</a></p>
+      </div>
+    </ion-list>
   </div>
 </ion-content>

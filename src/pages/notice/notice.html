@@ -1,0 +1,35 @@
+<ion-header no-border class="header">
+    <ion-navbar>
+      <!-- LEFT BUTTON -->
+      <ion-buttons left></ion-buttons>
+      <!-- TITLE -->
+      <ion-title>NOTICE</ion-title>  
+      <ion-buttons end>
+        <button ion-button (click)="viewCtrl.dismiss()"></button>
+      </ion-buttons>
+    </ion-navbar> 
+  </ion-header>
+  
+  
+  <ion-content>
+    <ion-list class="accordion-list">
+      <!-- First Level -->
+      <ion-list-header *ngFor="let item of information; let i = index" no-lines no-padding>
+        <!-- Toggle Button -->
+        <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+          {{ item.TITLE }}
+        </button>
+    
+        <ion-list *ngIf="item.open" no-lines>
+          <!-- Second Level -->
+            <!-- Direct Add Button as Fallback -->
+            <ion-item *ngIf="item.open" ion-item detail-none class="child-item" text-wrap>
+              <p text-lowercase>{{ item.CONTENT }}</p>
+              <p>{{ item.DATE }}</p>
+            </ion-item>
+  
+        </ion-list>
+  
+      </ion-list-header>
+    </ion-list>
+  </ion-content>
